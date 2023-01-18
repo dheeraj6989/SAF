@@ -1,0 +1,4 @@
+<suite name='allSuites'>
+<suite-files><suite-file path='web_testNg.xml'/></suite-files>
+</suite>
+

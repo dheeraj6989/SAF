@@ -1,0 +1,20 @@
+<suite name='mobile_testNG' parallel='tests'>
+<parameter name='projectName' value='Zenlounge'/>
+<parameter name='browserName' value='null'/>
+<parameter name='ip' value='null'/>
+<parameter name='port_no' value='null'/>
+<parameter name='suiteID' value='3'/>
+
+<test name='Zenlounge_1'>
+<parameter name='udid' value='Samsung Galaxy S3 Emulator'/>
+
+<parameter name='devicename' value='Samsung Galaxy S3 Emulator_Saucelabs'/>
+<parameter name='url' value='anish_21:6d1afa68-e9b1-448c-9c1d-275dae22f518@ondemand.saucelabs.com:80'/>
+<parameter name='platform' value='android'/>
+<parameter name='tcid' value='3'/>
+<parameter name='platformVersion' value='4.4'/>
+<parameter name='browser' value='browser'/>
+<classes><class name='FunctionLibrary.SuiteExecutionTime'/><class name='FunctionLibrary.SuiteExecutionDetails'/><class  name='Modules.Zenlounge.Mobile.Android.Web.TestScript.English.Mobile_Scripts.TC_ZEN_Login1_Mob_en'/>
+</classes>
+</test>
+</suite>
