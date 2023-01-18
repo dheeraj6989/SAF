@@ -1,4 +1,5 @@
 package Modules.MIS.Desktop.Pages;
+
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
+
+import com.thoughtworks.selenium.webdriven.commands.Click;
 
 import FunctionLibrary.GlobalFunction;
 import FunctionLibrary.GlobalVariable;
@@ -233,6 +236,169 @@ public class Components {
 		}
 	}
 	
+	public int get_TE_STOCK_ProdQTY(){
+		int te_stock_prod_qty = 0;
+		String te_stock_prod_qty_str = "0";
+		try {
+			te_stock_prod_qty_str = globalFunction.cleanString_Simple(globalFunction.getTextForThisElement(page.pdp.priceArea_StockQty_Ele));
+			if(te_stock_prod_qty_str != "" && te_stock_prod_qty_str != null){
+				te_stock_prod_qty = Integer.parseInt(te_stock_prod_qty_str);
+			}
+		} catch (Exception e) {
+			System.out.println("ERROR :: get_TE_STOCK_ProdQTY :: " + e.getMessage());
+		}
+		return te_stock_prod_qty;
+	}
 	
+	private int get_FinalQTY(int STOCK, int MOQ){
+		int final_qty_int = 1;
+		/*if STOCK > MOQ
+		then QTY = QTY + 1
+		
+		if STOCK >= MOQ
+		then QTY = QTY
+		
+		if STOCK == 0
+		then DO NO ADD TO CART*/
+		
+		if(STOCK > MOQ){
+			final_qty_int += 1;
+		} else if(STOCK >= MOQ){
+			// final_qty_int = QTY
+		} else {
+			final_qty_int = 0;
+		}
+		return final_qty_int;
+	}
+	
+	// BREAKCRUMS HEADER
+	public String getQTY_stock_BC_HEADER(){
+		int stock_int = 1;
+		int final_qty_int = 1;
+		
+		String stock_str = "1";
+		String final_qty_str = "1";
+		
+		try {
+			// GET STOCK
+			stock_int = get_TE_STOCK_ProdQTY();
+			
+			// GET QTY
+			final_qty_str = globalFunction.cleanString_Simple(globalFunction.getTextBox_Value(page.pdp.prodQty_bcHeader));
+			if(final_qty_str != "" && final_qty_str != null)
+				final_qty_int = Integer.parseInt(final_qty_str);
+			
+			if(stock_int > 1)
+				final_qty_int += 1;
+
+		} catch (Exception e) {
+			System.out.println("ERROR :: getQTY_stock_moq_PRICE_BREAK :: " + e.getMessage());
+		} finally {
+			final_qty_str = Integer.toString(final_qty_int);
+		}
+		System.out.println("---->> getQTY_stock_BC_HEADER :: stock_int :: " + stock_int);
+		System.out.println("---->> getQTY_stock_BC_HEADER :: final_qty_str :: " + final_qty_str);
+		return final_qty_str;
+	} // FUNC END
+	
+	public String getQTY_stock_moq_DIST_INVENTORY(){
+		int stock_int = 1;
+		int moq_int = 1;
+		int final_qty_int = 1;
+		
+		String stock_str = "1";
+		String moq_str = "1";
+		String final_qty_str = "1";
+		
+		try {
+			// GET QTY
+			final_qty_str = globalFunction.cleanString_Simple(globalFunction.getTextBox_Value(page.pdp.DistInventory_CartQty_Tb));
+			if(final_qty_str != "" && final_qty_str != null){
+				final_qty_int = Integer.parseInt(final_qty_str);
+			}
+			// GET STOCK
+			stock_str = globalFunction.cleanString_Simple(globalFunction.getTextBox_Value(page.pdp.distInfo_ProdInfo_Stock));
+			if(stock_str != "" && stock_str != null){
+				stock_int = Integer.parseInt(stock_str);
+			}
+			// GET MOQ
+			moq_str = globalFunction.cleanString_Simple(globalFunction.getTextBox_Value(page.pdp.distInfo_ProdInfo_MOQ));
+			if(moq_str != "" && moq_str != null){
+				moq_int = Integer.parseInt(moq_str);
+			}
+			final_qty_int = get_FinalQTY(stock_int, moq_int);
+			
+		} catch (Exception e) {
+			System.out.println("ERROR :: getQTY_stock_moq_DIST_INVENTORY :: " + e.getMessage());
+		} finally {
+			final_qty_str = Integer.toString(final_qty_int);
+		}
+		System.out.println("---->> getQTY_stock_moq_DIST_INVENTORY :: stock_int :: " + stock_int);
+		System.out.println("---->> getQTY_stock_moq_DIST_INVENTORY :: final_qty_str :: " + final_qty_str);
+		return final_qty_str;
+	} // FUNC END
+	
+	
+	public String getQTY_stock_moq_PRICE_BREAK(){
+		int stock_int = 1;
+		int moq_int = 1;
+		int final_qty_int = 1;
+		
+		String stock_str = "1";
+		String moq_str = "1";
+		String final_qty_str = "1";
+		
+		try {
+			// GET QTY
+			final_qty_str = globalFunction.cleanString_Simple(globalFunction.getTextBox_Value(page.pdp.prodQty_priceBreak));
+			if(final_qty_str != "" && final_qty_str != null){
+				final_qty_int = Integer.parseInt(final_qty_str);
+			}
+			// GET STOCK
+			stock_str = globalFunction.cleanString_Simple(globalFunction.getTextBox_Value(page.pdp.priceBreak_ProdInfo_Stock));
+			if(stock_str != "" && stock_str != null){
+				stock_int = Integer.parseInt(stock_str);
+			}
+			// GET MOQ
+			moq_str = globalFunction.cleanString_Simple(globalFunction.getTextBox_Value(page.pdp.priceBreak_ProdInfo_MOQ));
+			if(moq_str != "" && moq_str != null){
+				moq_int = Integer.parseInt(moq_str);
+			}
+			final_qty_int = get_FinalQTY(stock_int, moq_int);
+			
+		} catch (Exception e) {
+			System.out.println("ERROR :: getQTY_stock_moq_PRICE_BREAK :: " + e.getMessage());
+		} finally{
+			final_qty_str = Integer.toString(final_qty_int);
+		}
+		System.out.println("---->> getQTY_stock_moq_PRICE_BREAK :: stock_int :: " + stock_int);
+		System.out.println("---->> getQTY_stock_moq_PRICE_BREAK :: final_qty_str :: " + final_qty_str);
+		return final_qty_str;
+	} // FUNC END
+	
+	
+	public boolean click_OnAllFacets(String xPath) {
+		try {
+			String xpath = xPath;
+			String[] first_xpath = xpath.split("--replace--");
+			String pathToCalculateSize = first_xpath[0].substring(0,
+					(first_xpath[0].length() - 1));
+			System.out.println(pathToCalculateSize);
+
+			List<WebElement> liElements = globalFunction.get_WebDriver().findElements(By
+					.xpath(pathToCalculateSize));
+
+			for (int i = 1; i < liElements.size() + 1; i++) {
+				WebElement linkElement = globalFunction.get_WebDriver().findElement(By
+						.xpath(first_xpath[0] + i + first_xpath[1]));
+				linkElement.click();
+				globalFunction.pause(2000);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 	
 } // CLASS END

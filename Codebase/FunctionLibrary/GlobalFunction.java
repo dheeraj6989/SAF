@@ -6,17 +6,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.net.URL;
-import java.security.SecureRandom;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -26,13 +25,17 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Options;
+import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -48,8 +51,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
+import Modules.MIS.Desktop.Base.BaseTest;
 import Modules.MIS.Desktop.Base.ExtentManager;
+
+import java.security.SecureRandom;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class GlobalFunction{
 	
@@ -127,11 +136,7 @@ public class GlobalFunction{
 				propertyHandlerObj.setFileName(GlobalVariable.getGlobalsetuppropertyfile());
 			}
 			
-			// ELOQUA FORM SITE
-			else if(pageName.equalsIgnoreCase("eloqua_form")){
-				propertyHandlerObj.setFileName(GlobalVariable.getEloquaformpropertyfileEn());
-			}
-			
+				
 			// ENGLISH LOCALE
 			else if(localeChoice.equalsIgnoreCase("en")){
 				if(pageName.equalsIgnoreCase("home")){
@@ -225,63 +230,14 @@ public class GlobalFunction{
 		DesiredCapabilities desiredCaps = null;
 		PropertyHandler propertyHandlerObj = null;
 
-		String mstrTC_Name = null;
-		String device_new = null;
 		String browser = null;
-		String browser_version = null;
-		String os = null;
-		String os_version = null;
-		String resolution = null;
-
-		String proxyHost = null;
-		String proxyPort = null;
-
+		
 		try {
 
-			mstrTC_Name = browserDetails.get("mstrTC_Name");
-			device_new = browserDetails.get("device_new");
-			browser = browserDetails.get("browser");
-			browser_version = browserDetails.get("browser_version");
-			os = browserDetails.get("os");
-			os_version = browserDetails.get("os_version");
-			resolution = browserDetails.get("resolution");
+		browser = browserDetails.get("browser");
+		propertyHandlerObj = getPropertyFile("global", "global");
 
-			proxyHost = browserDetails.get("proxyHost");
-			proxyPort = browserDetails.get("proxyPort");
-
-			propertyHandlerObj = getPropertyFile("global", "global");
-
-			if(device_new.equalsIgnoreCase("BrowserStack")){
-
-				//String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-
-				//For HTTP
-				//System.getProperties().put("http.proxyHost", proxyHost);
-				//System.getProperties().put("http.proxyPort", proxyPort);
-				//System.getProperties().put("http.proxyHost", "restrictedproxy.tycoelectronics.com");
-				//System.getProperties().put("http.proxyPort", "80");
-				//System.getProperties().put("http.proxyUser", "<USER>");
-				//System.getProperties().put("http.proxyPassword", "<PASSWORD>");
-
-				//For HTTPS
-				//System.getProperties().put("https.proxyHost", proxyHost);
-				//System.getProperties().put("https.proxyPort", proxyPort);
-				//System.getProperties().put("https.proxyHost", "restrictedproxy.tycoelectronics.com");
-				//System.getProperties().put("https.proxyPort", "80");
-				//System.getProperties().put("https.proxyUser", "<USER>");
-				//System.getProperties().put("https.proxyPassword", "<PASSWORD>");
-
-				desiredCaps = new DesiredCapabilities();
-				desiredCaps.setCapability("browser", browser);
-				desiredCaps.setCapability("browser_version", browser_version);
-				desiredCaps.setCapability("os", os);
-				desiredCaps.setCapability("os_version", os_version);
-				desiredCaps.setCapability("resolution", resolution);
-				//desiredCaps.setCapability("name", mstrTC_Name+"_"+browser+"_"+os+"_"+timeStamp);
-				desiredCaps.setCapability("name", mstrTC_Name+"_"+browser+"_"+os);
-				desiredCaps.setCapability("browserstack.debug", "true");
-
-			} else {
+			
 
 				if(browser.equalsIgnoreCase("firefox")){  		// F I  R E F O X
 
@@ -296,21 +252,12 @@ public class GlobalFunction{
 					System.setProperty("webdriver.chrome.driver",propertyHandlerObj.readProperties("ChromeDriverPath"));
 					desiredCaps = new DesiredCapabilities().chrome();
 					desiredCaps.setBrowserName("chrome");
+								
 					
-					// NEW TEST
-					String downloadFilepath = "c:\\dheeraj";
-
-					HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-					chromePrefs.put("profile.default_content_settings.popups", 0);
-					chromePrefs.put("download.default_directory", downloadFilepath);
-
 					ChromeOptions options = new ChromeOptions();
-					HashMap<String, Object> chromeOptionsMap = new HashMap<String, Object>();
-					options.setExperimentalOption("prefs", chromePrefs);
-					options.addArguments("--test-type");
+									
 					// options.addArguments("--incognito");
 
-					desiredCaps.setCapability(ChromeOptions.CAPABILITY, chromeOptionsMap);
 					desiredCaps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 					desiredCaps.setCapability(ChromeOptions.CAPABILITY, options);
 
@@ -330,13 +277,13 @@ public class GlobalFunction{
 
 				}
 
-			} // BrowserStack IF END
+		
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return desiredCaps;
-	}
+}
 
 	private WebDriverWait initializeWebDriverWait(){
 		wait = new WebDriverWait(webDriver, webDriverWait);
@@ -346,49 +293,25 @@ public class GlobalFunction{
 	}
 
 	// MAP
-	public WebDriver openApplicationURL(Map<String, String> browserDetails){
+	public WebDriver openApplicationURL(Map<String, String> browserDetails) {
 
 		DesiredCapabilities desiredCaps = null;
-		String hubURL = null;
-
 		String appURL = null;
-		String ip = null;
-		String port_no = null;
+		
 
 		try {
 
-			appURL = browserDetails.get("appURL");
-			ip = browserDetails.get("ip");
-			port_no = browserDetails.get("port");
-
-			hubURL = "http://" + ip + ":" + port_no + "/wd/hub";
-
+			 appURL = browserDetails.get("appURL"); 
+			 System.out.println(appURL);
+			
 			desiredCaps = getDesiredCapabilities(browserDetails);
-			webDriver = new RemoteWebDriver(new URL(hubURL),desiredCaps);
-
-			System.out.println("\n\t hubURL :: " + hubURL);
+			webDriver = new ChromeDriver(desiredCaps);
 
 			// INITIALIZE WEB DRIVER WAIT and THINK TIME
 			initializeWebDriverWait();
 			jse = (JavascriptExecutor) webDriver;
 
-			if( !(browserDetails.get("device_new").equalsIgnoreCase("BrowserStack")) ){
-				// ----------- TO EXTRACT NODE IP -----------
-
-				HttpHost host = new HttpHost(browserDetails.get("ip"), Integer.parseInt(browserDetails.get("port")));
-				HttpClient client = HttpClientBuilder.create().build();
-				URL testSessionApi = new URL("http://" + browserDetails.get("ip") + ":" + browserDetails.get("port") + "/grid/api/testsession?session=" + ((RemoteWebDriver)webDriver).getSessionId()); 
-				BasicHttpEntityEnclosingRequest r = new BasicHttpEntityEnclosingRequest("POST", testSessionApi.toExternalForm()); 
-				HttpResponse response = client.execute(host,r);
-				JSONObject object;
-
-				object = new JSONObject(EntityUtils.toString(response.getEntity()));
-				String proxyID = (String) object.get("proxyId");
-				String node = (proxyID.split("//")[1].split(":")[0]);
-				System.out.println("\n\t Node ID :: "+ node);
-
-				// ----------- TO EXTRACT NODE IP END -----------
-			}
+			
 
 			if(appURL != null && appURL != ""){
 				webDriver.get(appURL);
@@ -442,8 +365,7 @@ public class GlobalFunction{
 	//DesiredCapabilities caps= getDesiredCapabilities(browserDetails);
 
 	DesiredCapabilities caps = new DesiredCapabilities();
-	caps.setCapability("browserName", "Chrome");	
-	caps.setCapability("browser_version", "11.0");
+	caps.setCapability("browserName", "Chrome");	caps.setCapability("browser_version", "11.0");
 	caps.setCapability("os", "ios");
 	caps.setCapability("os_version", "10.3");
 	//caps.setCapability("os_version", "7.0");
@@ -504,8 +426,10 @@ public class GlobalFunction{
 				e.printStackTrace();
 			}
 			return webDriver;
-		}
-	
+}
+
+		
+		
 	
 	// SELET URL ACCRODING TO LOCALE AND EXECUTION ENVIRONMTN
 	public String getURL_For_LocaleChoice(String localeChoice){

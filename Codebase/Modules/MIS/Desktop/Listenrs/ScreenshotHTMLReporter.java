@@ -12,6 +12,8 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.uncommons.reportng.HTMLReporter;
 
+import FunctionLibrary.GlobalFunction;
+
 public class ScreenshotHTMLReporter extends HTMLReporter implements ITestListener {
 
 	protected static final ScreenshotReportNGUtils SS_UTILS = new ScreenshotReportNGUtils();

@@ -1,7 +1,5 @@
 eclipse.preferences.version=1
-encoding//Codebase/Modules/TE/Desktop/TestData/TestData_PROD/PGP_de.properties=UTF-8
-encoding//Codebase/Modules/TE/Desktop/TestScript/Chinese/Products_Display/TC_TE_Verify_Product_Display_zh.java=UTF-8
-encoding//Codebase/Modules/TE/Desktop/TestScript/Japanese/Industry_and_Solutions/TC_TE_IndustriesAndSolutions_Aerospace_ja.java=UTF-8
+encoding//Codebase/Modules/MIS/Desktop/TestScript/Chinese/Products_Display/TC_TE_Verify_Product_Display_zh.java=UTF-8
 encoding//Codebase/ObjectRepository/ELOQUA_Form_zh.properties=UTF-8
 encoding//Codebase/ObjectRepository/ELOQUA_de.properties=UTF-8
 encoding//Codebase/ObjectRepository/ELOQUA_en.properties=UTF-8
