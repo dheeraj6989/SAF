@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="-1" name="Failed suite [web_testNG]">
-  <test name="TE AutoMation(failed)">
-    <parameter name="proxyPort" value="80"/>
-    <parameter name="suiteID" value="20"/>
-    <parameter name="device_new" value="xyz"/>
-    <parameter name="os" value="Windows"/>
-    <parameter name="os_version" value="7"/>
-    <parameter name="ip" value="192.168.231.158"/>
-    <parameter name="browserName" value="firefox"/>
-    <parameter name="browser_version" value="54.0"/>
-    <parameter name="projectName" value="GE"/>
-    <parameter name="resolution" value="1024x768"/>
-    <parameter name="proxyHost" value="restrictedproxy.tycoelectronics.com"/>
-    <parameter name="port_no" value="8060"/>
+  <test name="MIS AutoMation(failed)">
+    <parameter name="browserName" value="chrome"/>
+    <parameter name="projectName" value="MIS"/>
     <classes>
-      <class name="Modules.TE.Desktop.TestScript.English.Header_Footer.TC_TE_Footer_en">
+      <class name="Modules.MIS.Desktop.TestScript.English.Us.Login.TC_TE_Login_en">
         <methods>
-          <include name="closeSetup"/>
+          <include name="verify_Field_Velidationin_LoginPage" invocation-numbers="0"/>
+          <include name="aterMethod"/>
           <include name="script"/>
-          <include name="verifyAboutTEConnectivity"/>
         </methods>
-      </class> <!-- Modules.TE.Desktop.TestScript.English.Header_Footer.TC_TE_Footer_en -->
+      </class> <!-- Modules.MIS.Desktop.TestScript.English.Us.Login.TC_TE_Login_en -->
     </classes>
-  </test> <!-- TE AutoMation(failed) -->
+  </test> <!-- MIS AutoMation(failed) -->
 </suite> <!-- Failed suite [web_testNG] -->

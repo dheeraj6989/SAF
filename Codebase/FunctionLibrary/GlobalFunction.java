@@ -60,7 +60,7 @@ import java.security.SecureRandom;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-public class GlobalFunction{
+public class GlobalFunction {
 	
 	private  GlobalFunction globalFunction = null;
 	private final String propertyFileName = "global";
@@ -82,14 +82,14 @@ public class GlobalFunction{
 	String parentWinHandle = "";
 	String childWinHandle = "";
 
-	private static String prefix_stage = "stage";
+	private static String prefix_int = "int";
 	private static String prefix_prod = "prod";
 	private static String prefix_qa= "qa";
 
 	private static String suffix_en= "en";
-	private static String suffix_zh= "zh";
-	private static String suffix_ja= "ja";
-	private static String suffix_de= "de";
+	private static String suffix_sp= "sp";
+	private static String suffix_po= "po";
+	
 
 	private static String seperator = "_";
 	private static String string_appURL = "appURL";
@@ -139,84 +139,54 @@ public class GlobalFunction{
 				
 			// ENGLISH LOCALE
 			else if(localeChoice.equalsIgnoreCase("en")){
-				if(pageName.equalsIgnoreCase("home")){
-					propertyHandlerObj.setFileName(GlobalVariable.getHomepagepropertyfileEn());
-				} else if(pageName.equalsIgnoreCase("plp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPlppropertyfileEn());
-				} else if(pageName.equalsIgnoreCase("pgp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPgppagepropertyfileEn());
-				} else if(pageName.equalsIgnoreCase("pdp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPdppagepropertyfileEn());
-				} else if(pageName.equalsIgnoreCase("pnp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPnppagepropertyfileEn());
-				} else if(pageName.equalsIgnoreCase("eloqua")){
-					propertyHandlerObj.setFileName(GlobalVariable.getEloquapagepropertyfileEn());
-				} else if(pageName.equalsIgnoreCase("selfservice")){
-					propertyHandlerObj.setFileName(GlobalVariable.getSelfservicepropertyfileEn());
+				if(pageName.equalsIgnoreCase("reg")){
+					propertyHandlerObj.setFileName(GlobalVariable.getRegpagepropertyfileEn());
+				} else if(pageName.equalsIgnoreCase("lg")){
+					propertyHandlerObj.setFileName(GlobalVariable.getLgpagepropertyfileEn());
+				} else if(pageName.equalsIgnoreCase("mfa")){
+					propertyHandlerObj.setFileName(GlobalVariable.getmfapagepropertyfileEn());
+				} else if(pageName.equalsIgnoreCase("minf")){
+					propertyHandlerObj.setFileName(GlobalVariable.getminfpagepropertyfileEn());
+				} else if(pageName.equalsIgnoreCase("psw")){
+					propertyHandlerObj.setFileName(GlobalVariable.getpswpagepropertyfileEn());
 				} 
 				
 			} 
 
 			// GERMAN LOCALE
-			else if(localeChoice.equalsIgnoreCase("de")){
-				if(pageName.equalsIgnoreCase("home")){
-					propertyHandlerObj.setFileName(GlobalVariable.getHomepagepropertyfileDe());
-				} else if(pageName.equalsIgnoreCase("plp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPlppropertyfileDe());
-				} else if(pageName.equalsIgnoreCase("pgp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPgppagepropertyfileDe());
-				} else if(pageName.equalsIgnoreCase("pdp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPdppagepropertyfileDe());
-				} else if(pageName.equalsIgnoreCase("pnp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPnppagepropertyfileDe());
-				} else if(pageName.equalsIgnoreCase("eloqua")){
-					propertyHandlerObj.setFileName(GlobalVariable.getEloquapagepropertyfileDe());
-				} else if(pageName.equalsIgnoreCase("selfservice")){
-					propertyHandlerObj.setFileName(GlobalVariable.getSelfservicepropertyfileDe());
+			else if(localeChoice.equalsIgnoreCase("sp")){
+				if(pageName.equalsIgnoreCase("reg")){
+					propertyHandlerObj.setFileName(GlobalVariable.getRegpagepropertyfileSp());
+				} else if(pageName.equalsIgnoreCase("lg")){
+					propertyHandlerObj.setFileName(GlobalVariable.getLgpagepropertyfileSp());
+				} else if(pageName.equalsIgnoreCase("mfa")){
+					propertyHandlerObj.setFileName(GlobalVariable.getmfapagepropertyfileSp());
+				} else if(pageName.equalsIgnoreCase("minf")){
+					propertyHandlerObj.setFileName(GlobalVariable.getminfpagepropertyfileSp());
+				} else if(pageName.equalsIgnoreCase("psw")){
+					propertyHandlerObj.setFileName(GlobalVariable.getpswpagepropertyfileSp());
 				} 
-
 				
 			}
 			
 			// CHINESE LOCALE
-			else if(localeChoice.equalsIgnoreCase("zh")){
-				if(pageName.equalsIgnoreCase("home")){
-					propertyHandlerObj.setFileName(GlobalVariable.getHomepagepropertyfileZh());
-				} else if(pageName.equalsIgnoreCase("plp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPlppropertyfileZh());
-				} else if(pageName.equalsIgnoreCase("pgp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPgppagepropertyfileZh());
-				} else if(pageName.equalsIgnoreCase("pdp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPdppagepropertyfileZh());
-				} else if(pageName.equalsIgnoreCase("pnp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPnppagepropertyfileZh());
-				} else if(pageName.equalsIgnoreCase("eloqua")){
-					propertyHandlerObj.setFileName(GlobalVariable.getEloquapagepropertyfileZh());
-				} else if(pageName.equalsIgnoreCase("selfservice")){
-					propertyHandlerObj.setFileName(GlobalVariable.getSelfservicepropertyfileZh());
+			else if(localeChoice.equalsIgnoreCase("po")){
+				if(pageName.equalsIgnoreCase("reg")){
+					propertyHandlerObj.setFileName(GlobalVariable.getRegpagepropertyfilePo());
+				} else if(pageName.equalsIgnoreCase("lg")){
+					propertyHandlerObj.setFileName(GlobalVariable.getLgpagepropertyfilePo());
+				} else if(pageName.equalsIgnoreCase("mfa")){
+					propertyHandlerObj.setFileName(GlobalVariable.getmfapagepropertyfilePo());
+				} else if(pageName.equalsIgnoreCase("minf")){
+					propertyHandlerObj.setFileName(GlobalVariable.getminfpagepropertyfilePo());
+				} else if(pageName.equalsIgnoreCase("psw")){
+					propertyHandlerObj.setFileName(GlobalVariable.getpswpagepropertyfilePo());
 				} 
 
 			}
+		
 			
-			// JAPANESE LOCALE
-			else if(localeChoice.equalsIgnoreCase("ja")){
-				if(pageName.equalsIgnoreCase("home")){
-					propertyHandlerObj.setFileName(GlobalVariable.getHomepagepropertyfileJa());
-				} else if(pageName.equalsIgnoreCase("plp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPlppropertyfileJa());
-				} else if(pageName.equalsIgnoreCase("pgp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPgppagepropertyfileJa());
-				} else if(pageName.equalsIgnoreCase("pdp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPdppagepropertyfileJa());
-				} else if(pageName.equalsIgnoreCase("pnp")){
-					propertyHandlerObj.setFileName(GlobalVariable.getPnppagepropertyfileJa());
-				}else if(pageName.equalsIgnoreCase("eloqua")){
-					propertyHandlerObj.setFileName(GlobalVariable.getEloquapagepropertyfileJa());
-				} else if(pageName.equalsIgnoreCase("selfservice")){
-					propertyHandlerObj.setFileName(GlobalVariable.getSelfservicepropertyfileJa());
-				} 
-
-			}
+			
 		}
 			
 		 catch (Exception e) {
@@ -224,6 +194,86 @@ public class GlobalFunction{
 		}
 		return propertyHandlerObj;
 	}
+	
+	
+	
+	
+	// SELET URL ACCRODING TO LOCALE AND EXECUTION ENVIRONMTN
+		public String getURL_For_LocaleChoice(String localeChoice){
+			String property_appURL = "";
+			try {
+				if(localeChoice != null){				
+					if(execution_Environment_Flag == 1){		// PROD
+						property_appURL = prefix_prod + seperator + string_appURL + seperator;
+						if(localeChoice.equalsIgnoreCase(suffix_en)){
+							property_appURL += suffix_en;
+						} else if(localeChoice.equalsIgnoreCase(suffix_sp)){
+							property_appURL += suffix_sp;
+						} else if(localeChoice.equalsIgnoreCase(suffix_po)){
+							property_appURL += suffix_po;
+						} 
+						} 
+					else if(execution_Environment_Flag == 2){	// Int
+						property_appURL = prefix_int + seperator + string_appURL + seperator;
+						if(localeChoice.equalsIgnoreCase(suffix_en)){
+							property_appURL += suffix_en;
+						} else if(localeChoice.equalsIgnoreCase(suffix_sp)){
+							property_appURL += suffix_sp;
+						} else if(localeChoice.equalsIgnoreCase(suffix_po)){
+							property_appURL += suffix_po;
+						} 
+					} else if(execution_Environment_Flag == 3){	// QA
+						property_appURL = prefix_qa + seperator + string_appURL + seperator;
+						System.out.println("flag"+property_appURL);
+						if(localeChoice.equalsIgnoreCase(suffix_en)){
+							property_appURL += suffix_en;
+						} else if(localeChoice.equalsIgnoreCase(suffix_sp)){
+							property_appURL += suffix_sp;
+						} else if(localeChoice.equalsIgnoreCase(suffix_po)){
+							property_appURL += suffix_po;
+						} 
+					}
+					
+					property_appURL = propertyHandlerObj.readProperties(property_appURL);
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			return property_appURL;
+		}
+
+		public String get_TestDataPath(){
+			String folderPath = "";
+			String testDataPath = "";
+			String testDataPath_ENV = "";
+			try {
+				//folderPath = propertyHandlerObj.readProperties("safRootPath");
+				folderPath = System.getProperty("user.dir");
+				   System.out.println("Current working directory : " + folderPath);
+				testDataPath = propertyHandlerObj.readProperties("testDataPath");
+				System.out.println(testDataPath);
+
+				if(execution_Environment_Flag == 1){ // PROD
+					testDataPath_ENV = propertyHandlerObj.readProperties("testDataPath_PROD");
+
+				} else if(execution_Environment_Flag == 2){	// INT
+					testDataPath_ENV = propertyHandlerObj.readProperties("testDataPath_INT");
+
+				} else if(execution_Environment_Flag == 3){	// QA
+					testDataPath_ENV = propertyHandlerObj.readProperties("testDataPath_QA");
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			folderPath += testDataPath + testDataPath_ENV;
+			
+			System.out.println(folderPath);
+			return folderPath;
+		}
+
+
 
 	// MAP
 	private DesiredCapabilities getDesiredCapabilities(Map<String, String> browserDetails){
@@ -256,7 +306,7 @@ public class GlobalFunction{
 					
 					ChromeOptions options = new ChromeOptions();
 									
-					// options.addArguments("--incognito");
+					options.addArguments("--incognito");
 
 					desiredCaps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 					desiredCaps.setCapability(ChromeOptions.CAPABILITY, options);
@@ -318,7 +368,7 @@ public class GlobalFunction{
 			}
 
 			webDriver.manage().window().maximize();
-			//Thread.sleep(2000);
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -329,188 +379,12 @@ public class GlobalFunction{
 	
 	
 	
-	public WebDriver openApplicationURL_BrowserStack(Map<String, String> browserDetails){
-
-		//	DesiredCapabilities desiredCaps = globalFunction.getDesiredCapabilities(browserDetails)getDesiredCapabilities();
-			String hubURL = null;
-
-			String appURL = null;
-			String ip = null;
-			String port_no = null;
-			String browserStack=null;
-
-			try {
-
-				appURL = browserDetails.get("appURL");
-				ip = browserDetails.get("ip");
-				port_no = browserDetails.get("port");
-				browserStack = browserDetails.get("browserStack");
-				
-			//	https://adhirmukati1:hRqR5yR7mf9jBqwpBc4n@hub-cloud.browserstack.com/wd/hub
-
-				hubURL = "http://" + ip + ":" + port_no + "/wd/hub";
-	System.out.println("hub url "+hubURL);
-
-	final String USERNAME = "adhirmukati1";
-	final String AUTOMATE_KEY = "hRqR5yR7mf9jBqwpBc4n";
-	final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
-
-	System.out.println(URL);
-	System.getProperties().put("https.proxyHost", "restrictedproxy.tycoelectronics.com");
-	System.getProperties().put("https.proxyPort", "80");
-	System.getProperties().put("https.proxyUser", "TE903830");
-	System.getProperties().put("https.proxyPassword", "Welcome12345");
-
-
-	//DesiredCapabilities caps= getDesiredCapabilities(browserDetails);
-
-	DesiredCapabilities caps = new DesiredCapabilities();
-	caps.setCapability("browserName", "Chrome");	caps.setCapability("browser_version", "11.0");
-	caps.setCapability("os", "ios");
-	caps.setCapability("os_version", "10.3");
-	//caps.setCapability("os_version", "7.0");
-	caps.setCapability("resolution", "1024x768");
-	/*caps.setCapability("proxyHost", "restrictedproxy.tycoelectronics.com");
-	caps.setCapability("proxyPort", "80");
-	caps.setCapability("https.proxyUser", "TE903830");
-	caps.setCapability("https.proxyPassword", "Welcome1234");*/
-	//caps.setCapability("device", "Samsung Galaxy S8");
-
-	caps.setCapability("os", "Windows");
-	caps.setCapability("os_version", "8.1");
-	caps.setCapability("browser", "Chrome");
-	caps.setCapability("browser_version", "70.0");
-	caps.setCapability("browserstack.selenium_version", "3.5.2");
-
-/*	caps.setCapability("real_mobile", "true");
-*/	caps.setCapability("browserstack.local", "false");
-
-	webDriver = new RemoteWebDriver(new URL(URL), caps);
-	/*
-				desiredCaps = getDesiredCapabilities(browserDetails);
-				webDriver = new RemoteWebDriver(new URL(URL),desiredCaps);*/
-//			    WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
-
-				System.out.println("\n\t hubURL :: " + hubURL);
-
-				// INITIALIZE WEB DRIVER WAIT and THINK TIME
-				initializeWebDriverWait();
-				jse = (JavascriptExecutor) webDriver;
-
-				if( !(browserDetails.get("device_new").equalsIgnoreCase("BrowserStack")) ){
-					// ----------- TO EXTRACT NODE IP -----------
-
-					HttpHost host = new HttpHost(browserDetails.get("ip"), Integer.parseInt(browserDetails.get("port")));
-					HttpClient client = HttpClientBuilder.create().build();
-					URL testSessionApi = new URL("http://" + browserDetails.get("ip") + ":" + browserDetails.get("port") + "/grid/api/testsession?session=" + ((RemoteWebDriver)webDriver).getSessionId()); 
-					BasicHttpEntityEnclosingRequest r = new BasicHttpEntityEnclosingRequest("POST", testSessionApi.toExternalForm()); 
-					HttpResponse response = client.execute(host,r);
-					JSONObject object;
-
-					object = new JSONObject(EntityUtils.toString(response.getEntity()));
-					String proxyID = (String) object.get("proxyId");
-					String node = (proxyID.split("//")[1].split(":")[0]);
-					System.out.println("\n\t Node ID :: "+ node);
-
-					// ----------- TO EXTRACT NODE IP END -----------
-				}
-
-				if(appURL != null && appURL != ""){
-					webDriver.get(appURL);
-				}
-
-				//webDriver.manage().window().maximize();
-				//Thread.sleep(2000);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return webDriver;
-}
+	
 
 		
 		
 	
-	// SELET URL ACCRODING TO LOCALE AND EXECUTION ENVIRONMTN
-	public String getURL_For_LocaleChoice(String localeChoice){
-		String property_appURL = "";
-		try {
-			if(localeChoice != null){				
-				if(execution_Environment_Flag == 1){		// PROD
-					property_appURL = prefix_prod + seperator + string_appURL + seperator;
-					if(localeChoice.equalsIgnoreCase(suffix_en)){
-						property_appURL += suffix_en;
-					} else if(localeChoice.equalsIgnoreCase(suffix_zh)){
-						property_appURL += suffix_zh;
-					} else if(localeChoice.equalsIgnoreCase(suffix_de)){
-						property_appURL += suffix_de;
-					} else if(localeChoice.equalsIgnoreCase(suffix_ja)){
-						property_appURL += suffix_ja;
-					}
-				} else if(execution_Environment_Flag == 2){	// STAGE
-					property_appURL = prefix_stage + seperator + string_appURL + seperator;
-					if(localeChoice.equalsIgnoreCase(suffix_en)){
-						property_appURL += suffix_en;
-					} else if(localeChoice.equalsIgnoreCase(suffix_zh)){
-						property_appURL += suffix_zh;
-					} else if(localeChoice.equalsIgnoreCase(suffix_de)){
-						property_appURL += suffix_de;
-					} else if(localeChoice.equalsIgnoreCase(suffix_ja)){
-						property_appURL += suffix_ja;
-					}
-				} else if(execution_Environment_Flag == 3){	// QA
-					property_appURL = prefix_qa + seperator + string_appURL + seperator;
-					if(localeChoice.equalsIgnoreCase(suffix_en)){
-						property_appURL += suffix_en;
-					} else if(localeChoice.equalsIgnoreCase(suffix_zh)){
-						property_appURL += suffix_zh;
-					} else if(localeChoice.equalsIgnoreCase(suffix_de)){
-						property_appURL += suffix_de;
-					} else if(localeChoice.equalsIgnoreCase(suffix_ja)){
-						property_appURL += suffix_ja;
-					}
-				}
-				
-				property_appURL = propertyHandlerObj.readProperties(property_appURL);
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return property_appURL;
-	}
-
-	public String get_TestDataPath(){
-		String folderPath = "";
-		String testDataPath = "";
-		String testDataPath_ENV = "";
-		try {
-			//folderPath = propertyHandlerObj.readProperties("safRootPath");
-			folderPath = System.getProperty("user.dir");
-			   System.out.println("Current working directory : " + folderPath);
-			testDataPath = propertyHandlerObj.readProperties("testDataPath");
-			System.out.println(testDataPath);
-
-			if(execution_Environment_Flag == 1){ // PROD
-				testDataPath_ENV = propertyHandlerObj.readProperties("testDataPath_PROD");
-
-			} else if(execution_Environment_Flag == 2){	// STAGE
-				testDataPath_ENV = propertyHandlerObj.readProperties("testDataPath_STAGE");
-
-			} else if(execution_Environment_Flag == 3){	// QA
-				testDataPath_ENV = propertyHandlerObj.readProperties("testDataPath_QA");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		folderPath += testDataPath + testDataPath_ENV;
-		
-		System.out.println(folderPath);
-		return folderPath;
-	}
-
-	// USE FROM OLD SAF
+		// USE FROM OLD SAF
 	public String getCurrentErrorMsg(String errorType){
 		String errorMessage = null;
 		return errorMessage;
@@ -776,8 +650,8 @@ System.out.println(pathToCalculateSize);
 
 	public boolean verify_Excet_Text(String actualText, String expectedText){
 		boolean verifyResult = false;
-		//System.out.println("\n\t-->> actualText :: " + actualText);
-		//System.out.println("\t-->> eeeeepText :: " + expectedText);
+		System.out.println("\n\t-->> actualText :: " + actualText);
+		System.out.println("\t-->> expected Text :: " + expectedText);
 		if(actualText != null){
 			if(actualText.equals(expectedText)){
 				verifyResult = true;
@@ -794,7 +668,7 @@ System.out.println(pathToCalculateSize);
 				actualText.trim().replaceAll(" ", "").replaceAll(" ", "");
 				expectedText.trim().replaceAll(" ", "").replaceAll(" ", "");
 				System.out.println("\n\t-->> actualText :: " + actualText);
-				System.out.println("\t-->> eeeeepText :: " + expectedText);
+				System.out.println("\t-->> expectedText :: " + expectedText);
 				if(actualText.equalsIgnoreCase(expectedText)){
 					verifyResult = true;
 				}
@@ -1342,6 +1216,26 @@ System.out.println(pathToCalculateSize);
     return status; 
 	}
 	
+	
+	
+	public  String getEnv() {
+		String env = "";
+		try {
+
+			if (execution_Environment_Flag == 1) { // PROD
+				env = "PROD";
+			} else if (execution_Environment_Flag == 2) { // Int
+				env = "INT";
+			} else if (execution_Environment_Flag == 3) { // QA
+				env = "QA";
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return env;
+	}
+
 	
 	
 } // CLASS END

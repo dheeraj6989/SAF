@@ -6,7 +6,7 @@
 
 
 <classes>
-<class name='Modules.MIS.Desktop.TestScript.English.Industry_and_Solutions.TC_TE_IndustriesAndSolutions_Aerospace_en'/> 
+<class name='Modules.MIS.Desktop.TestScript.English.Us.Login.TC_TE_Login_en'/> 
  
   </classes>
 </test>

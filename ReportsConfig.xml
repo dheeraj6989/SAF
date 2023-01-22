@@ -14,11 +14,10 @@
         <protocol>https</protocol>
         
         <!-- title of the document -->
-        <documentTitle>TE_Automation_Report</documentTitle>
+        <documentTitle>MIS_Automation_Report</documentTitle>
         
         <!-- report name - displayed at top-nav -->
-        <reportName><![CDATA[
-                <img src='C:\Automation_POC\SAF\TE_LOGO\TELOGO.png' />
+        <reportName><![CDATA[<img src='C:\Users\DHBAGHEL\Desktop\All_framework\QA_test\Automation_POC\SAF\MIS_Logo\metlife-min.png' />
             ]]></reportName>
             
              <!-- global time format override -->

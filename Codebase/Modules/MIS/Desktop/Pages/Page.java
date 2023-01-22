@@ -9,11 +9,11 @@ public class Page {
 	private WebDriver webDriver = null;
 	private GlobalFunction globalFunction = null;
 	
-	public HomePage homePage = null;
-	public PDP pdp = null;
-	public PGP pgp = null;
-	public PLP plp = null;
-	public PNP pnp = null;
+	public RegPage regpage = null;
+	public MfaPage mfapage = null;
+	public MinfPage minfpage = null;
+	public PswPage pswpage = null;
+	public LgPage lgpage = null;
 	
 	private String localeChoice = "";
 	
@@ -31,11 +31,11 @@ public class Page {
 		this.webDriver = webDriver;
 		this.globalFunction = globalFunctionObj;
 		
-		homePage = new HomePage(localeChoice, webDriver, globalFunctionObj);
-		pdp = new PDP(localeChoice, webDriver, globalFunctionObj);
-		pgp = new PGP(localeChoice, webDriver, globalFunctionObj);
-		plp = new PLP(localeChoice, webDriver, globalFunctionObj);
-		pnp = new PNP(localeChoice, webDriver, globalFunctionObj);
+		regpage = new RegPage(localeChoice, webDriver, globalFunctionObj);
+		lgpage = new LgPage(localeChoice, webDriver, globalFunctionObj);
+		minfpage = new MinfPage(localeChoice, webDriver, globalFunctionObj);
+		mfapage = new MfaPage(localeChoice, webDriver, globalFunctionObj);
+		pswpage = new PswPage(localeChoice, webDriver, globalFunctionObj);
 		
 	}
 
